@@ -320,7 +320,8 @@ Cache::config('_cake_core_', array(
 	'prefix' => $prefix . 'cake_core_',
 	'path' => CACHE . 'persistent' . DS,
 	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+	'duration' => $duration,
+	'mask' => 0666
 ));
 
 /**
@@ -332,5 +333,11 @@ Cache::config('_cake_model_', array(
 	'prefix' => $prefix . 'cake_model_',
 	'path' => CACHE . 'models' . DS,
 	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+	'duration' => $duration,
+	'mask' => 0666
 ));
+
+/**
+ *	umask値を0に設定
+ */
+umask(0);
